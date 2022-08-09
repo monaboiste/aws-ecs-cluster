@@ -5,7 +5,7 @@ resource "aws_alb" "alb_int" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.default_alb_int_sg.id]
 
-  subnets = data.aws_subnet.private_subnets.*.id
+  subnets = data.aws_subnets.private_subnets.ids
 
   tags = merge({ Name = "${var.cluster_name}-alb-int" }, var.tags)
 }

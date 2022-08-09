@@ -1,4 +1,3 @@
-
 # External load balancer
 resource "aws_alb" "alb_ext" {
   name               = "${var.cluster_name}-alb-ext"
@@ -6,7 +5,7 @@ resource "aws_alb" "alb_ext" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.default_ext_alb_sg.id]
 
-  subnets = data.aws_subnet.public_subnets.*.id
+  subnets = data.aws_subnets.public_subnets.ids
 
   tags = merge({ Name = "${var.cluster_name}-alb-ext" }, var.tags)
 }

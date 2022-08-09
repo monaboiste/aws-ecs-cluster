@@ -4,22 +4,24 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "aws_subnet" "public_subnets" {
-  vpc_id                  = data.aws_vpc.vpc.id
-  availability_zone       = element(var.public_subnet_az, count.index)
-  count                   = length(var.public_subnet_az)
+data "aws_subnets" "public_subnets" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
 
   tags = {
-    Name = "monaboiste-vpc-public-subnet-${element(var.public_subnet_az, count.index)}"
+    Name = "monaboiste-vpc-public-subnet-*"
   }
 }
 
-data "aws_subnet" "private_subnets" {
-  vpc_id                  = data.aws_vpc.vpc.id
-  availability_zone       = element(var.private_subnet_az, count.index)
-  count                   = length(var.private_subnet_az)
+data "aws_subnets" "private_subnets" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
 
   tags = {
-    Name = "monaboiste-vpc-public-subnet-${element(var.private_subnet_az, count.index)}"
+    Name = "monaboiste-vpc-private-subnet-*"
   }
 }
