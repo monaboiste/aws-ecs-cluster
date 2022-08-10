@@ -30,10 +30,10 @@ resource "aws_alb_listener" "alb_int_listener_http" {
 
 # Security groups
 resource "aws_security_group" "default_alb_int_sg" {
-  name        = "${var.cluster_name}-${var.region}-alb-int-sg"
+  name        = "${var.cluster_name}-alb-int-sg"
   description = "Default SG for ${var.cluster_name} for internal ALB"
   vpc_id      = data.aws_vpc.vpc.id
-  tags        = merge({ Name = "${var.cluster_name}-${var.region}-alb-int-sg" }, var.tags)
+  tags        = merge({ Name = "${var.cluster_name}-alb-int-sg" }, var.tags)
 }
 
 resource "aws_security_group_rule" "ingress_alb_int_sgr_http" {

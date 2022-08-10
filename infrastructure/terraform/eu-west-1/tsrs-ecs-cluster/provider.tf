@@ -13,10 +13,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "monaboiste-terraform-state"
-    key            = "eu-west-1/ecs-cluster/tsrs-ecs-cluster/terraform.tfstate"
+    bucket         = "monaboiste-terraform-state-eu-west-1"
+    key            = "ecs-cluster/tsrs-ecs-cluster/terraform.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "monaboiste-terraform-state-locks"
+    dynamodb_table = "monaboiste-terraform-state-eu-west-1-locks"
     encrypt        = true
   }
 }
