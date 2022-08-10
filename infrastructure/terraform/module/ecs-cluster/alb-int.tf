@@ -24,6 +24,8 @@ resource "aws_alb_listener" "alb_int_listener_http" {
       status_code  = "404"
     }
   }
+
+  tags = merge({ Name = "${var.cluster_name}-alb-int-listener" }, var.tags)
 }
 
 # Security groups
