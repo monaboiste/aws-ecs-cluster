@@ -1,6 +1,6 @@
 # Amazon Elastic Container Service Cluster
 The repository contains all the infrastructure code needed to create an entire ECS cluster along with all dependent
-resources, ie an external (internet facing) and internal application load balancers.
+resources, ie an external (internet facing) ~~and internal application load balancers~~ (discarded the idea of having internal ALB for cost optimalizations).
 
 ## Prerequisites
 - aws account
